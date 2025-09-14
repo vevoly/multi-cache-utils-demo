@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.github.vevoly.demo</groupId>
+    <artifactId>j-multicache-demo-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>j-multicache-demo</name>
+
+    <modules>
+        <module>j-multicache-demo-common</module>
+        <module>j-multicache-demo-user</module>
+        <module>j-multicache-demo-public</module>
+    </modules>
+
+    <properties>
+        <java.version>17</java.version>
+        <redisson.version>3.36.0</redisson.version>
+        <spring-boot.version>3.2.0</spring-boot.version>
+        <mybatis-plus.version>3.5.5</mybatis-plus.version>
+        <testcontainers.version>1.19.3</testcontainers.version>
+        <j-multicache.version>1.0.0-SNAPSHOT</j-multicache.version>
+    </properties>
+
+    <!-- 使用 dependencyManagement 统一管理版本 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>com.vevoly.multicache</groupId>
+                <artifactId>j-multicache-spring-boot-starter</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.vevoly.demo</groupId>
+                <artifactId>j-multicache-demo-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+</project>
