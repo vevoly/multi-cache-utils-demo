@@ -1,4 +1,4 @@
-package com.github.vevoly.demo.controller;
+package com.vevoly.multicache.demo.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +8,6 @@ public class UserController {
 
     @GetMapping("/hello")
     public String sayHello() {
-        return "Hello, J-Multicache World ! ";
+        return "Hello, J-Multicache World - User Service ! ";
     }
 }

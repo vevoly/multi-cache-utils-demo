@@ -18,6 +18,7 @@
 
     <modules>
         <module>j-multicache-demo-common</module>
+        <module>j-multicache-demo-cache</module>
         <module>j-multicache-demo-user</module>
         <module>j-multicache-demo-public</module>
     </modules>
@@ -29,6 +30,8 @@
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <j-multicache.version>1.0.0-SNAPSHOT</j-multicache.version>
+        <j-multicache-demo.version>1.0.0-SNAPSHOT</j-multicache-demo.version>
+
     </properties>
 
     <!-- 使用 dependencyManagement 统一管理版本 -->
@@ -36,9 +39,9 @@
         <dependencies>
 
             <dependency>
-                <groupId>com.vevoly.multicache</groupId>
+                <groupId>com.github.vevoly</groupId>
                 <artifactId>j-multicache-spring-boot-starter</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${j-multicache.version}</version>
             </dependency>
 
             <dependency>
@@ -50,7 +53,12 @@
             <dependency>
                 <groupId>com.github.vevoly.demo</groupId>
                 <artifactId>j-multicache-demo-common</artifactId>
-                <version>${project.version}</version>
+                <version>${j-multicache-demo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.vevoly.demo</groupId>
+                <artifactId>j-multicache-demo-cache</artifactId>
+                <version>${j-multicache-demo.version}</version>
             </dependency>
 
         </dependencies>
