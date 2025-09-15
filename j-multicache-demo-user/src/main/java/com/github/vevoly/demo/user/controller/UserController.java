@@ -1,4 +1,4 @@
-package com.vevoly.multicache.demo.controller;
+package com.github.vevoly.demo.user.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

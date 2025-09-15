@@ -1,10 +1,9 @@
-package com.vevoly.multicache.demo;
+package com.github.vevoly.demo.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.r2dbc.R2dbcAutoConfiguration;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.github.vevoly.demo")
 public class UserApplication {
 
     public static void main(String[] args) {

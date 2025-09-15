@@ -1,4 +1,4 @@
-package com.github.vevoly.demo.config;
+package com.github.vevoly.demo.cache.config;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
 
-@EnableCaching
 @Configuration
+@EnableCaching
 @ConditionalOnClass(Caffeine.class)
 public class CaffeineManagerConfig {
 
