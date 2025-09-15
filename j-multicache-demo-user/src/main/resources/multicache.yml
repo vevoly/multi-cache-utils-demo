@@ -1,0 +1,92 @@
+j-multicache:
+  # ---------------------------------------------------------------
+  # 全局默认配置
+  # ---------------------------------------------------------------
+  # 当 'configs' 中找不到特定 cacheName 的配置时，将使用这里的默认值。
+  defaults:
+    redis:
+      ttl: 1h                 # 默认Redis缓存1小时
+      empty-ttl: 1m           # 默认空值缓存1分钟
+      storage-type: STRING    # 默认存储类型为STRING
+    caffeine:
+      enabled: true           # 默认启用L1(Caffeine)缓存
+      expire-after-write: 10m # 默认L1缓存10分钟
+      maximum-size: 500       # 默认L1最大容量500条
+
+  # ---------------------------------------------------------------
+  # 特定业务缓存的独立配置
+  # ---------------------------------------------------------------
+  # 这里的 key 必须与您 Java 代码中使用的 cacheName 常量完全匹配。
+  # 使用方括号 [] 包裹带特殊字符(如冒号)的key，以防止被Spring Boot错误解析。
+  configs:
+    # --- String Storage Scenarios ---
+    # 场景: 缓存单个用户详情
+    '[user:user_details]':
+      redis:
+        ttl: 6h
+        empty-ttl: 5m           # 空缓存5分钟
+      caffeine:
+        expire-after-write: 1m
+        maximum-size: 10000
+
+    # --- Page Storage Scenarios ---
+    # 场景: 缓存租户分页列表
+    '[result:tenant:tenant_page]':
+      redis:
+        ttl: 10m
+        storage-type: PAGE
+      caffeine:
+        enabled: false # 分页结果通常不适合L1缓存，但也可以
+
+    # --- List Storage Scenarios ---
+    # 场景: 缓存租户下的所有用户等级 (数据稳定，长缓存)
+    '[user:user_levels_by_tenant]':
+      redis:
+        ttl: 24h
+        storage-type: LIST
+      caffeine:
+        expire-after-write: 1h
+        maximum-size: 200
+
+    # 场景: 缓存站点可选头像列表 (数据稳定，长缓存)
+    'avatars':
+      redis:
+        ttl: 30d
+        storage-type: LIST
+      caffeine:
+        expire-after-write: 15d
+        maximum-size: 100
+
+    # --- Set / Union Storage Scenarios ---
+    # 场景: 缓存 L1 的【并集结果】，TTL应较短
+    '[banner:banner_visible_ids_union]':
+      caffeine:
+        expire-after-write: 15s # L1并集结果缓存15秒
+        maximum-size: 500
+      redis:
+        ttl: 1m
+
+    # 场景: 缓存 L2 的【反向索引Set】，由后台维护，TTL可以很长
+    '[banner:usertype:userId]':
+      redis:
+        ttl: 7d
+        storage-type: SET
+      caffeine:
+        enabled: false # 源Set通常不需要L1缓存
+
+    '[banner:usertype:levelId]':
+      redis:
+        ttl: 7d
+        storage-type: SET
+      caffeine:
+        enabled: false
+
+    # --- Hash Storage Scenarios ---
+    # 场景: 缓存用户的个人偏好设置
+    'user_preferences':
+      redis:
+        ttl: 12h
+        storage-type: HASH
+      caffeine:
+        expire-after-write: 1h
+        maximum-size: 1000

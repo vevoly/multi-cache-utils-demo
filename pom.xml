@@ -21,6 +21,8 @@
         <module>j-multicache-demo-cache</module>
         <module>j-multicache-demo-user</module>
         <module>j-multicache-demo-public</module>
+        <module>j-multicache-demo-code-generator</module>
+        <module>j-multicache-demo-test</module>
     </modules>
 
     <properties>
@@ -31,6 +33,7 @@
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <j-multicache.version>1.0.0-SNAPSHOT</j-multicache.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
         <j-multicache-demo.version>1.0.0-SNAPSHOT</j-multicache-demo.version>
 
     </properties>
@@ -41,6 +44,11 @@
 
             <dependency>
                 <groupId>com.github.vevoly</groupId>
+                <artifactId>j-multicache-common</artifactId>
+                <version>${j-multicache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.vevoly</groupId>
                 <artifactId>j-multicache-spring-boot-starter</artifactId>
                 <version>${j-multicache.version}</version>
             </dependency>
@@ -49,6 +57,11 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis-plus.version}</version>
             </dependency>
 
             <dependency>
@@ -67,6 +80,12 @@
                 <artifactId>hutool-core</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
 
         </dependencies>
     </dependencyManagement>

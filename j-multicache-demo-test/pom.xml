@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>j-multicache-demo-cache</artifactId>
+    <artifactId>j-multicache-demo-test</artifactId>
 
     <dependencies>
         <!-- 引入所有缓存相关的基础设施 -->
@@ -31,31 +31,22 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
             <groupId>com.github.vevoly</groupId>
             <artifactId>j-multicache-common</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
+            <groupId>com.github.vevoly.demo</groupId>
+            <artifactId>j-multicache-demo-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
+            <groupId>com.github.vevoly.demo</groupId>
+            <artifactId>j-multicache-demo-cache</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.5.9</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

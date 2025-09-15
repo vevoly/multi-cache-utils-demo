@@ -9,21 +9,21 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
 
-@Configuration
-@EnableCaching
-@ConditionalOnClass(Caffeine.class)
-public class CaffeineManagerConfig {
-
-    @Bean("caffeineCacheManager")
-    public CaffeineCacheManager caffeineCacheManager() {
-        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
-
-        // 默认配置
-        caffeineCacheManager.setCaffeine(Caffeine.newBuilder()
-                .expireAfterWrite(Duration.ofSeconds(30))
-                .maximumSize(100)
-                .recordStats()
-        );
-        return caffeineCacheManager;
-	}
-}
+//@Configuration
+//@EnableCaching
+//@ConditionalOnClass(Caffeine.class)
+//public class CaffeineManagerConfig {
+//
+////    @Bean("caffeineCacheManager")
+//    public CaffeineCacheManager caffeineCacheManager() {
+//        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
+//
+//        // 默认配置
+//        caffeineCacheManager.setCaffeine(Caffeine.newBuilder()
+//                .expireAfterWrite(Duration.ofSeconds(30))
+//                .maximumSize(100)
+//                .recordStats()
+//        );
+//        return caffeineCacheManager;
+//	}
+//}
